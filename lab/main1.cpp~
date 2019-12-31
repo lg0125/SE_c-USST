@@ -1,0 +1,128 @@
+#include<cstdio>
+#include<cstdlib>
+#include<cstring>
+#include<direct.h>
+#include<map>
+#include<string>
+#include "data_done.h"
+
+using namespace std;
+
+const char c[7][30] = {{"../data/edge2015_1.csv"},{"../data/edge2015_2.csv"},{"../data/edge2016_1.csv"},{"../data/edge2016_2.csv"},{"../data/edge2017_1.csv"},{"../data/edge2017_2.csv"},{"../data/edge2018_1.csv"}};
+
+map<Node,float> table; 
+//char _data[3][20];
+
+int main(){
+	/*int size;i
+
+	char **ret = explode(',',"aaaaa,dddd,eeee\n",&size);
+
+	for(int i = 0;i < size;i++){
+		printf("%s\n",ret[i]);
+		free(ret[i]);
+	}
+
+	free(ret);
+
+
+	return 0; */
+
+	FILE *fp = NULL;
+	char *line = NULL;
+	//char *record = NULL;
+	char buffer[1024] = {""};
+	char **_data;
+	string _source;
+	string _target;
+	int size = 0;
+
+	if((fp = fopen(c[0],"at+"))!=NULL)
+	{
+		fseek(fp,20,SEEK_SET);
+
+		int j = 0;
+
+		while((line = fgets(buffer,sizeof(buffer),fp))!=NULL)
+		{
+			if(line[strlen(line) - 1] == '\n')
+			{
+				line[strlen(line) - 1] = '\0';
+			}
+	
+			_data = explode(',',line,&size);
+
+			for(int i = 0;i < size;i++)
+			{
+				if(i != size - 1)
+				{
+					printf("%s ",_data[i]);
+				}
+				else
+				{
+					printf("%s\n",_data[i]);
+				
+				}
+			}
+			
+			//sscanf(line,"%s,%s,%s",_data[0],_data[1],_data[2]);
+			
+			/*for(int i = 0;i < 3;i++)
+			{
+				if(i != size - 1)
+				{
+					printf("%s ",_data[i]);
+				}
+				else
+				{
+					printf("%s\n",_data[i]);
+				
+				}
+			}*/
+			
+			//_source = _data[0];
+			//_target = _data[1];
+			//Node node("asda","addad");
+			//Node node(_data[0],_data[1]);
+
+			/*Node node(_data[0],_data[1]);
+			
+			printf("-----------\n");
+			printf("%s %s",node.source,node.target);
+			printf("-----------\n");*/
+			
+			//table.insert(pair<Node,float>(Node(_data[0],_data[1]),sigmoid(atof(_data[2]))));
+			//table.insert(pair<Node,float>(Node(),sigmoid(atof(_data[2]))));
+		
+			Node node;
+			//float _weight = atof(_data[2]);
+			//strcpy(node.source,_data[0]);
+			//strcpy(node.target,_data[1]);
+			
+			printf("%s %s\n",_data[1],_data[2]);
+
+			//free(node);
+			freeExplode(_data,size);	
+
+			if(j == 5) break;
+			j++;
+
+		}
+
+		fclose(fp);
+		fp = NULL;
+
+	}	
+	
+	/*printf("-------------\n");
+	
+
+	for(map<Node,float>::iterator it=table.begin();it!=table.end();(it)++)
+	{
+		printf("%s ",it->first.source);
+		printf("%s ",it->first.target);
+		printf("%f\n",it->second);
+	
+	}*/
+	return 0;
+}

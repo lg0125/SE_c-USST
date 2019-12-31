@@ -1,0 +1,28 @@
+#include<direct.h>
+#include "data_done.h"
+
+using namespace std;
+
+const char c[7][30] = {{"../data/edge2015_1.csv"},{"../data/edge2015_2.csv"},{"../data/edge2016_1.csv"},{"../data/edge2016_2.csv"},{"../data/edge2017_1.csv"},{"../data/edge2017_2.csv"},{"../data/edge2018_1.csv"}};
+
+const char head[15] = "../result";
+
+const char tail[10] = ".csv";
+
+map<Node,float> table1;
+map<Node,float> table2;
+map<Node,float> table3;
+
+char name[5];
+
+int main(){
+
+	for(int i = 0;i < 7;i++)
+	{
+			
+	
+	}
+
+
+	return 0;
+}

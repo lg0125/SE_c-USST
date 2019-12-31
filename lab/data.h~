@@ -1,0 +1,55 @@
+#ifndef DATA_H
+#define DATA_H
+
+//#include<string>
+//using namespace std;
+
+struct Node
+{
+	char source[20];
+	char target[20];
+	
+	/*Node(){};
+	Node(const char *_source,const char *_target)
+	{
+		//source = _source;
+		//target = _target;
+		//strcpy(source,_source);
+		//strcpy(target,_target);
+		//source = (char *)malloc(strlen(_source)+1);
+		//target = (char *)malloc(strlen(_target)+1);
+		//memcpy(source,_source,strlen(_source) + 1);
+		//memcpy(target,_target,strlen(_target) + 1);
+	}*/
+	/*bool operator<(const Node &rhs)const
+	{
+		if(source.compare(rhs.source)<0){
+			return true;
+		}else if(source.compare(rhs.source) == 0){
+			if(target.compare(rhs.target)<0){
+				return true;
+			}
+		}
+		return false;
+	}*/
+	
+	bool operator<(const Node &rhs)const{
+		if(strcmp(source,rhs.source)<0) return true;
+		else if(strcmp(source,rhs.source)==0){
+			if(strcmp(target,rhs.target)<0) return true;
+		}
+		return false;
+	}
+};
+
+float sigmoid(float x);
+
+char **explode(char sep,const char *str,unsigned int *size);
+
+void freeExplode(char **arr, int size);
+
+float alpha();
+
+void get_data(const char* file_name,map<Node,float> &table);
+
+#endif
